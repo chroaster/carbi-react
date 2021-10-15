@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - yarn install
+  build:
+    on-failure: ABORT
+    commands:
+      - npx browserslist@latest --update-db
+      - yarn build
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
