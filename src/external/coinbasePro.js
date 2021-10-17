@@ -17,6 +17,7 @@ class CoinbasePro {
           time: new Date(),
         };
       } else {
+        // fetch failed
         throw new Error(response.statusText);
       }
     } catch (err) {
