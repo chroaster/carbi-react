@@ -4,7 +4,7 @@ const AddSymbol = ({ handleAddSymbol }) => {
   const [symbol, setSymbol] = useState('');
 
   const handleChange = (event) => {
-    setSymbol(event.target.value);
+    setSymbol(event.target.value.toUpperCase());
   }
 
   const handleKeyPress = ({ key }) => {

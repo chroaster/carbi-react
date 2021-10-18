@@ -49,7 +49,7 @@ const StarterData = {
       symbol: 'ETH',
     }, {
       id: 2,
-      symbol: 'ADA',
+      symbol: 'DOGE',
     }
   ],
 }
