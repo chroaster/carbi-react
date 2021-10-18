@@ -1,7 +1,7 @@
 body {
   margin: 10%;
   background-color: #351905;
-  background-image: url(assets/images/black-linen.png);
+  background-image: url(../../assets/images/black-linen.png);
   color:antiquewhite;
 }
 
@@ -10,16 +10,8 @@ body {
   font-size: 2rem;
   color: burlywood;
   font-weight: 550;
-}
-
-.carbiTable {
-
-}
-
-.carbiTableHead {
-  color: goldenrod;
-}
-
-.carbiRow {
-  color:bisque;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  max-width: 800px;
 }

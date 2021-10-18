@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import CoinbasePro from '../external/coinbasePro';
-import Bithumb from '../external/bithumb';
-import MarginCell from './marginCell';
-import SigDig from '../utils/sigDig';
+import './CarbiRow.css';
+import MarginCell from './MarginCell/marginCell';
+import CoinbasePro from '../../../external/coinbasePro';
+import Bithumb from '../../../external/bithumb';
+import SigDig from '../../../utils/sigDig';
 
-const CarbiRow = ({ symbol, rate }) => {
+const CarbiRow = ({ symbol, name, rate }) => {
   const [sourceMarket, setSourceMarket] = useState({
     price: 0,
     volume: 0,
@@ -47,15 +48,24 @@ const CarbiRow = ({ symbol, rate }) => {
     return res;
   };
 
+  const shouldRender = () => {
+    return !isNaN(rate) && !isNaN(sourceMarket.price) && !isNaN(targetMarket.price)
+      && isFinite(sourceMarket.price) && isFinite(targetMarket.price);
+  }
+
   return (
     <tr className='carbiRow'>
-      <td>{symbol}</td>
-      <td>{sourceMarket.time && sourceMarket.change.toFixed(1)}</td>
-      <td>{sourceMarket.time && SigDig(sourceMarket.price)}</td>
-      <td><MarginCell source={sourceMarket.price} target={targetMarket.price} /></td>
-      <td>{targetMarket.time && SigDig(targetMarket.price)}</td>
-      <td>{targetMarket.time && targetMarket.change.toFixed(1)}</td>
-    </tr>
+      <td><span title={name}>{symbol}</span></td>
+      {shouldRender &&
+        <>
+          <td>{sourceMarket.time && sourceMarket.change.toFixed(1)}</td>
+          <td>{sourceMarket.time && SigDig(sourceMarket.price)}</td>
+          <td><MarginCell sourcePrice={sourceMarket.price} targetPrice={targetMarket.price} /></td>
+          <td>{targetMarket.time && SigDig(targetMarket.price)}</td>
+          <td>{targetMarket.time && targetMarket.change.toFixed(1)}</td>
+        </>
+      }
+    </tr >
   );
 
 };

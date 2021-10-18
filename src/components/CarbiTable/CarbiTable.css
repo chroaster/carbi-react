@@ -1,0 +1,81 @@
+table {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  max-width: 800px;
+}
+
+table tbody tr {
+  border: solid 1px rgba(255, 255, 255, 0.15);
+  border-left: 0;
+  border-right: 0;
+}
+
+table td {
+  padding: 0.175em 0.15em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+table th {
+  color: goldenrod;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+  border-bottom: solid 1px rgba(218, 165, 32, 0.05);
+}
+
+tfoot {
+  height: 3.25rem;
+}
+
+.crypto-flag {
+  width: 1.75rem;
+}
+
+.crypto-icon {
+  font-size: 1.5rem;
+  opacity: 70%;
+}
+
+.crypto-caret {
+  font-size: 1rem;
+}
+
+.crypto-arrow-h {
+  font-size: 0.75rem;
+}
+
+.favorable {
+  color: seagreen;
+}
+
+.unfavorable {
+  color: darkred;
+}
+
+.price {
+  font-weight: 300;
+  font-size: smaller;
+  color: slategray;
+}
+
+.heavy {
+  font-weight: 700;
+}
+
+.placeholder {
+  color: rgb(65, 47, 80);
+}
+
+.footnote {
+  width: 100%;
+  text-align: center;
+  color: plum;
+  font-weight: lighter;
+  opacity: 40%;
+  padding-top: 0rem;
+}

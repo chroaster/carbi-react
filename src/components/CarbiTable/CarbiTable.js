@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import CarbiRow from './carbiRow';
-import AddSymbol from './addSymbol';
-import StarterData from '../utils/starterData';
-import Spot from '../external/spot';
+import './CarbiTable.css';
+import CarbiRow from './CarbiRow/CarbiRow';
+import AddCarbiRow from './AddCarbiRow/AddCarbiRow';
+import StarterData from '../../utils/starterData';
+import Spot from '../../external/spot';
 
 const CarbiTable = () => {
   const [symbols, setSymbols] = useState(StarterData.defaultSymbols);
@@ -23,7 +24,7 @@ const CarbiTable = () => {
   );
 
   const carbiRows = symbols.map(item =>
-    <CarbiRow key={item.id} symbol={item.symbol} rate={rate} />
+    <CarbiRow key={item.id} symbol={item.symbol} name={item.name} rate={rate} />
   );
 
   const handleAddSymbol = (symbolToAdd) => {
@@ -40,15 +41,17 @@ const CarbiTable = () => {
 
   return (
     <table>
-      <thead className='carbiTableHead'>
+      <thead>
         <tr>
           {colHeaders}
         </tr>
       </thead>
       <tbody>
         {rateLoaded && carbiRows}
-        <AddSymbol handleAddSymbol={handleAddSymbol} />
       </tbody>
+      <tfoot>
+        <AddCarbiRow handleAddSymbol={handleAddSymbol} />
+      </tfoot>
     </table>
   );
 }

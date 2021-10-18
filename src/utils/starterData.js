@@ -44,12 +44,15 @@ const StarterData = {
     {
       id: 0,
       symbol: 'BTC',
+      name: 'Bitcoin',
     }, {
       id: 1,
       symbol: 'ETH',
+      name: 'Ethereum',
     }, {
       id: 2,
-      symbol: 'DOGE',
+      symbol: 'ADA',
+      name: 'Cardano',
     }
   ],
 }
