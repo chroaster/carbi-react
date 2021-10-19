@@ -28,7 +28,7 @@ const CarbiRow = ({ symbol, name, rate }) => {
     })();
 
     (async () => {
-      if (targetMarket.time === null) {
+      if (targetMarket.time === null && !isNaN(rate)) {
         const ticker = await fetchTarget(symbol);
         setTargetMarket({
           ...ticker,
