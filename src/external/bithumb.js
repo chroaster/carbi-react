@@ -1,9 +1,9 @@
 const Bithumb = async (currency) => {
   // Docs: https://apidocs.bithumb.com/
   try {
-    const proxy = 'https://simple-cors-proxy.chroaster.com/?url=';
+    // const proxy = 'https://simple-cors-proxy.chroaster.com/?url=';
     const url = `https://api.bithumb.com/public/ticker/${currency}`;
-    const response = await fetch(`${proxy}${url}`, { cache: 'no-cache', });
+    const response = await fetch(`${url}`, { cache: 'no-cache', });
     if (response.ok) {
       const bithumbResponse = await response.json();
 
