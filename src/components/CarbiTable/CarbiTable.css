@@ -1,6 +1,7 @@
 table {
   -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
+  overflow: hidden;
+  white-space: nowrap;
   margin: 0;
   width: 100%;
   text-align: center;

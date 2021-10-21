@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './CarbiTable.css';
+import CarbiHead from './CarbiHead/CarbiHead';
 import CarbiRow from './CarbiRow/CarbiRow';
 import AddCarbiRow from './AddCarbiRow/AddCarbiRow';
 import StarterData from '../../utils/starterData';
@@ -18,10 +19,6 @@ const CarbiTable = () => {
       setRateLoaded(true);
     })();
   }, [setRate]);
-
-  const colHeaders = columns.map(item =>
-    <th key={item.order}>{item.abbr}</th>
-  );
 
   const carbiRows = symbols.map(item =>
     <CarbiRow key={item.id} symbol={item.symbol} name={item.name} rate={rate} />
@@ -42,9 +39,7 @@ const CarbiTable = () => {
   return (
     <table>
       <thead>
-        <tr>
-          {colHeaders}
-        </tr>
+        <CarbiHead columns={columns} />
       </thead>
       <tbody>
         {rateLoaded && carbiRows}

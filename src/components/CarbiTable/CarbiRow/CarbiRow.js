@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import './CarbiRow.css';
 import MarginCell from './MarginCell/marginCell';
 import CoinbasePro from '../../../external/coinbasePro';

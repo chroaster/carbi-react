@@ -3,37 +3,37 @@ const StarterData = {
   defaultColumns: [
     {
       id: 0,
-      name: 'Symbol',
+      name: 'symbol',
       abbr: 'Sym',
       icon: null,
       order: 0,
     }, {
       id: 1,
-      name: '24h Change (US)',
+      name: 'change-us',
       abbr: '24h',
       icon: null,
       order: 1,
     }, {
       id: 2,
-      name: 'US Price',
+      name: 'price-us',
       abbr: 'US',
       icon: null,
       order: 2,
     }, {
       id: 3,
-      name: 'Margin',
+      name: 'margin',
       abbr: 'Mgn',
       icon: null,
       order: 3,
     }, {
       id: 4,
-      name: 'KR Price',
+      name: 'price-kr',
       abbr: 'KR',
       icon: null,
       order: 4,
     }, {
       id: 5,
-      name: '24h Change (KR)',
+      name: 'change-kr',
       abbr: '24h',
       icon: null,
       order: 5,

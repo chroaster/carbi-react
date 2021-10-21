@@ -1,3 +1,7 @@
 .carbiRow {
   color:bisque;
 }
+
+.carbiRow td {
+  padding: .2rem .65rem;
+}
