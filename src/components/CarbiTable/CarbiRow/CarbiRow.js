@@ -59,11 +59,11 @@ const CarbiRow = ({ symbol, name, rate }) => {
       <td><span title={name}>{symbol}</span></td>
       {shouldRender &&
         <>
-          <td>{sourceMarket.time && sourceMarket.change.toFixed(1)}</td>
-          <td>{sourceMarket.time && SigDig(sourceMarket.price)}</td>
+          <td>{sourceMarket.change.toFixed(1)}</td>
+          <td>{SigDig(sourceMarket.price)}</td>
           <td><MarginCell sourcePrice={sourceMarket.price} targetPrice={targetMarket.price} /></td>
-          <td>{targetMarket.time && SigDig(targetMarket.price)}</td>
-          <td>{targetMarket.time && targetMarket.change.toFixed(1)}</td>
+          <td>{SigDig(targetMarket.price)}</td>
+          <td>{targetMarket.change.toFixed(1)}</td>
         </>
       }
     </tr >

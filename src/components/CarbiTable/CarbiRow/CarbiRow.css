@@ -5,3 +5,19 @@
 .carbiRow td {
   padding: .2rem .65rem;
 }
+
+.caret {
+  font-size: 1rem;
+}
+
+.arrow-h {
+  font-size: 0.75rem;
+}
+
+.favorable {
+  color: seagreen;
+}
+
+.unfavorable {
+  color: darkred;
+}
