@@ -11,6 +11,7 @@ const CoinbasePro = async (symbol, baseCurrency = 'USD') => {
       const openPrice = Number.parseFloat(data.open);
       const changeSinceOpen = 100 * ((currentPrice - openPrice) / openPrice);
       return {
+        available: true,
         price: currentPrice,
         volume: Number.parseFloat(data.volume),
         change: changeSinceOpen,
@@ -18,15 +19,23 @@ const CoinbasePro = async (symbol, baseCurrency = 'USD') => {
       };
     } else {
       // fetch failed
-      throw new Error(response.statusText);
+      return failureObject();
     }
   } catch (err) {
     console.error(`Coinbase retrieval error: ${err.message}`);
-    return {
-      available: false,
-      errorMessage: err.message,
-    };
+    return failureObject(err.name);
   }
 }
+
+const failureObject = (errorMessage = 'Unknown error') => {
+  return {
+    available: false,
+    errorMessage: errorMessage,
+    price: 0,
+    volume: 0,
+    change: 0,
+    time: new Date(),
+  };
+};
 
 export default CoinbasePro;

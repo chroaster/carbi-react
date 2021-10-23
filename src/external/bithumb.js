@@ -10,15 +10,15 @@ const Bithumb = async (currency) => {
     response = await fetch(`${url}`, { cache: 'no-cache', });
   } catch (err) {
     console.warn(`Direct Bithumb fetch failed ${err.name}`);
-  }
 
-  try {
-    // attempt fetching via proxy
-    console.log('Attempting Bithumb fetch via proxy...')
-    response = await fetch(`${proxy}${url}`, { cache: 'no-cache', });
-  } catch (err) {
-    console.error(`Proxied Bithumb fetch failed ${err.name}. Is Bithumb down?`);
-    return failureObject(err.name);
+    try {
+      // attempt fetching via proxy
+      console.log('Attempting Bithumb fetch via proxy...')
+      response = await fetch(`${proxy}${url}`, { cache: 'no-cache', });
+    } catch (err) {
+      console.error(`Proxied Bithumb fetch failed ${err.name}. Is Bithumb down?`);
+      return failureObject(err.name);
+    }
   }
 
   if (response.ok) {
@@ -28,6 +28,7 @@ const Bithumb = async (currency) => {
       const data = bithumbResponse.data;
       // received normal response from bithumb
       return {
+        available: true,
         price: Number.parseFloat(data.closing_price),
         volume: Number.parseFloat(data.acc_trade_value_24H),
         change: Number.parseFloat(data.fluctate_rate_24H),
@@ -41,7 +42,7 @@ const Bithumb = async (currency) => {
   }
 }
 
-const failureObject = (errorMessage) => {
+const failureObject = (errorMessage = 'Unknown error') => {
   return {
     available: false,
     errorMessage: errorMessage,
