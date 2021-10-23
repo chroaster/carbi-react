@@ -4,7 +4,7 @@ Carbi is a clean, purpose-built dashboard providing at-a-glance market condition
 
 ## Implementation
 
-This is an implementation in React. Previous reditions were in [Ember.js](https://github.com/chroaster/carbi-ember) and [Svelte](https://github.com/chroaster/carbi-svelte).
+This is an implementation in React. Previous renditions were in [Ember.js](https://github.com/chroaster/carbi-ember) and [Svelte](https://github.com/chroaster/carbi-svelte).
 
 ## Improvements
 
@@ -14,3 +14,5 @@ Planned improvements:
   - Save watchlist
   - Stricter conditional rendering on initial load
   - Handle 3rd-party API errors and outages
+  - Use arrows and carets to indicate favorable/unfavorable
+  - Capture cursor focus after Add button click
