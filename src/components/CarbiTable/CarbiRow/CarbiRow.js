@@ -10,9 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCaretUp,
   faCaretDown,
+  faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-const CarbiRow = ({ symbol, name, rate }) => {
+const CarbiRow = ({ symbol, name, rate, id, handleDeleteSymbol }) => {
   const [sourceMarket, setSourceMarket] = useState({
     price: 0,
     volume: 0,
@@ -26,6 +27,8 @@ const CarbiRow = ({ symbol, name, rate }) => {
     change: 0,
     time: null,
   });
+
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -56,46 +59,62 @@ const CarbiRow = ({ symbol, name, rate }) => {
   };
 
   return (
-    <tr className='carbiRow'>
-      <td><span title={name}>{symbol}</span></td>
-      {(sourceMarket.available && targetMarket.available) ?
-        <>
-          <td>
-            {sourceMarket.change.toFixed(1) > 0 ?
-              <span className="caret favorable">
-                <FontAwesomeIcon icon={faCaretUp} />
-              </span>
-              :
-              <span className="caret unfavorable">
-                <FontAwesomeIcon icon={faCaretDown} />
-              </span>
-            }
-            {Math.abs(sourceMarket.change).toFixed(1)}
+    <>
+      <tr
+        className='carbiRow'
+        onClick={() => setExpanded(!expanded)}
+      >
+        <td><span title={name}>{symbol}</span></td>
+        {(sourceMarket.available && targetMarket.available) ?
+          <>
+            <td>
+              {sourceMarket.change.toFixed(1) > 0 ?
+                <span className="caret favorable">
+                  <FontAwesomeIcon icon={faCaretUp} />
+                </span>
+                :
+                <span className="caret unfavorable">
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </span>
+              }
+              {Math.abs(sourceMarket.change).toFixed(1)}
+            </td>
+            <td>{SigDig(sourceMarket.price)}</td>
+            <td>
+              <MarginCell sourcePrice={sourceMarket.price} targetPrice={targetMarket.price} />
+            </td>
+            <td>{SigDig(targetMarket.price)}</td>
+            <td>
+              {targetMarket.change.toFixed(1) > 0 ?
+                <span className="caret favorable">
+                  <FontAwesomeIcon icon={faCaretUp} />
+                </span>
+                :
+                <span className="caret unfavorable">
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </span>
+              }
+              {Math.abs(targetMarket.change).toFixed(1)}
+            </td>
+          </>
+          :
+          <>
+            <td colSpan='5'><LoadingSpinner /></td>
+          </>
+        }
+      </tr >
+      {expanded &&
+        <tr
+          className='carbiRow'
+        >
+          <td colSpan='6' align='end'>
+            <button onClick={() => handleDeleteSymbol(id)} className="delete-button">
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </button>
           </td>
-          <td>{SigDig(sourceMarket.price)}</td>
-          <td>
-            <MarginCell sourcePrice={sourceMarket.price} targetPrice={targetMarket.price} />
-          </td>
-          <td>{SigDig(targetMarket.price)}</td>
-          <td>
-            {targetMarket.change.toFixed(1) > 0 ?
-              <span className="caret favorable">
-                <FontAwesomeIcon icon={faCaretUp} />
-              </span>
-              :
-              <span className="caret unfavorable">
-                <FontAwesomeIcon icon={faCaretDown} />
-              </span>
-            }
-            {Math.abs(targetMarket.change).toFixed(1)}
-          </td>
-        </>
-        :
-        <>
-          <td colSpan='5'><LoadingSpinner /></td>
-        </>
+        </tr>
       }
-    </tr >
+    </>
   );
 
 };

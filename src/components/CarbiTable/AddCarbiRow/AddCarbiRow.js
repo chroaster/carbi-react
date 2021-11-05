@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './AddCarbiRow.css';
 
 const AddCarbiRow = ({ handleAddSymbol }) => {
   const [symbol, setSymbol] = useState('');
   const [active, setActive] = useState(false);
+  const symbolInput = useRef();
+
+  useEffect(() => {
+    if (active) {
+      symbolInput.current.focus();
+    }
+  }, [active]);
 
   const handleChange = (event) => {
     setSymbol(event.target.value.toUpperCase());
@@ -37,6 +44,7 @@ const AddCarbiRow = ({ handleAddSymbol }) => {
               value={symbol}
               onChange={handleChange}
               onKeyPress={handleKeyPress}
+              ref={symbolInput}
             />
             <button className='btn' onClick={handleClick}>X</button>
           </div>

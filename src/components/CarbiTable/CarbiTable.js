@@ -20,21 +20,32 @@ const CarbiTable = () => {
     })();
   }, [setRate]);
 
-  const carbiRows = symbols.map(item =>
-    <CarbiRow key={item.id} symbol={item.symbol} name={item.name} rate={rate} />
-  );
-
   const handleAddSymbol = (symbolToAdd) => {
     setSymbols(prev => {
       return [
         ...prev,
         {
-          id: prev.length,
+          id: prev.map(item => item.id).reduce((pv, id) => Math.max(pv, id)) + 1,
           symbol: symbolToAdd,
         }
       ];
     });
   };
+
+  const handleDeleteSymbol = (idToDelete) => {
+    setSymbols(prev => prev.filter(item => item.id !== idToDelete));
+  }
+
+  const carbiRows = symbols.map(item =>
+    <CarbiRow
+      key={item.id}
+      id={item.id}
+      symbol={item.symbol}
+      name={item.name}
+      rate={rate}
+      handleDeleteSymbol={handleDeleteSymbol}
+    />
+  );
 
   return (
     <table>

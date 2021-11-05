@@ -3,6 +3,7 @@
 }
 
 .carbiRow td {
+  cursor: pointer;
   padding: .2rem .65rem;
 }
 
@@ -17,4 +18,12 @@
 
 .unfavorable {
   color: darkred;
+}
+
+.delete-button {
+  color:bisque;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
 }
