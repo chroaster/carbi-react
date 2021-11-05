@@ -6,6 +6,11 @@ import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 import CoinbasePro from '../../../external/coinbasePro';
 import Bithumb from '../../../external/bithumb';
 import SigDig from '../../../utils/sigDig';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCaretUp,
+  faCaretDown,
+} from '@fortawesome/free-solid-svg-icons';
 
 const CarbiRow = ({ symbol, name, rate }) => {
   const [sourceMarket, setSourceMarket] = useState({
@@ -55,11 +60,35 @@ const CarbiRow = ({ symbol, name, rate }) => {
       <td><span title={name}>{symbol}</span></td>
       {(sourceMarket.available && targetMarket.available) ?
         <>
-          <td>{sourceMarket.change.toFixed(1)}</td>
+          <td>
+            {sourceMarket.change.toFixed(1) > 0 ?
+              <span className="caret favorable">
+                <FontAwesomeIcon icon={faCaretUp} />
+              </span>
+              :
+              <span className="caret unfavorable">
+                <FontAwesomeIcon icon={faCaretDown} />
+              </span>
+            }
+            {Math.abs(sourceMarket.change).toFixed(1)}
+          </td>
           <td>{SigDig(sourceMarket.price)}</td>
-          <td><MarginCell sourcePrice={sourceMarket.price} targetPrice={targetMarket.price} /></td>
+          <td>
+            <MarginCell sourcePrice={sourceMarket.price} targetPrice={targetMarket.price} />
+          </td>
           <td>{SigDig(targetMarket.price)}</td>
-          <td>{targetMarket.change.toFixed(1)}</td>
+          <td>
+            {targetMarket.change.toFixed(1) > 0 ?
+              <span className="caret favorable">
+                <FontAwesomeIcon icon={faCaretUp} />
+              </span>
+              :
+              <span className="caret unfavorable">
+                <FontAwesomeIcon icon={faCaretDown} />
+              </span>
+            }
+            {Math.abs(targetMarket.change).toFixed(1)}
+          </td>
         </>
         :
         <>

@@ -51,8 +51,28 @@ const StarterData = {
       name: 'Ethereum',
     }, {
       id: 2,
+      symbol: 'SOL',
+      name: 'Solana',
+    }, {
+      id: 3,
       symbol: 'ADA',
       name: 'Cardano',
+    }, {
+      id: 4,
+      symbol: 'DOT',
+      name: 'Polkadot',
+    }, {
+      id: 5,
+      symbol: 'DOGE',
+      name: 'Dogecoin',
+    }, {
+      id: 6,
+      symbol: 'UNI',
+      name: 'Uniswap',
+    }, {
+      id: 7,
+      symbol: 'LINK',
+      name: 'Chainlink',
     }
   ],
 }
