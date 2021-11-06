@@ -13,7 +13,7 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-const CarbiRow = ({ symbol, name, rate, id, handleDeleteSymbol }) => {
+const CarbiRow = ({ item, rate, handleDeleteSymbol }) => {
   const [sourceMarket, setSourceMarket] = useState({
     price: 0,
     volume: 0,
@@ -33,20 +33,20 @@ const CarbiRow = ({ symbol, name, rate, id, handleDeleteSymbol }) => {
   useEffect(() => {
     (async () => {
       if (sourceMarket.time === null) {
-        setSourceMarket(await fetchSource(symbol));
+        setSourceMarket(await fetchSource(item.symbol));
       }
     })();
 
     (async () => {
       if (targetMarket.time === null && !isNaN(rate)) {
-        const ticker = await fetchTarget(symbol);
+        const ticker = await fetchTarget(item.symbol);
         setTargetMarket({
           ...ticker,
           price: ticker.price / rate,
         });
       }
     })();
-  }, [symbol, sourceMarket, targetMarket, rate]);
+  }, [item.symbol, sourceMarket, targetMarket, rate]);
 
   const fetchSource = async (symbol) => {
     const res = await CoinbasePro(symbol);
@@ -64,7 +64,7 @@ const CarbiRow = ({ symbol, name, rate, id, handleDeleteSymbol }) => {
         className='carbiRow'
         onClick={() => setExpanded(!expanded)}
       >
-        <td><span title={name}>{symbol}</span></td>
+        <td align='start'><span title={item.name}>{item.symbol}</span></td>
         {(sourceMarket.available && targetMarket.available) ?
           <>
             <td>
@@ -105,10 +105,22 @@ const CarbiRow = ({ symbol, name, rate, id, handleDeleteSymbol }) => {
       </tr >
       {expanded &&
         <tr
-          className='carbiRow'
+          className='expanded'
         >
-          <td colSpan='6' align='end'>
-            <button onClick={() => handleDeleteSymbol(id)} className="delete-button">
+          <td colSpan='1' align='start'>
+            {item.name}
+          </td>
+          <td colSpan='2' align='end'>
+            <span>{sourceMarket.volume.toFixed(0)}</span>
+          </td>
+          <td colSpan='1' align='center'>
+            <span>24h vol</span>
+          </td>
+          <td colSpan='1' align='start'>
+            <span>{targetMarket.volume.toFixed(0)}</span>
+          </td>
+          <td colSpan='1' align='end'>
+            <button onClick={() => handleDeleteSymbol(item.id)} className="delete-button">
               <FontAwesomeIcon icon={faTrashAlt} />
             </button>
           </td>

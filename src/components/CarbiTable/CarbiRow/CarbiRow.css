@@ -4,7 +4,7 @@
 
 .carbiRow td {
   cursor: pointer;
-  padding: .2rem .65rem;
+  padding: .3rem .4rem;
 }
 
 .caret {
@@ -21,9 +21,14 @@
 }
 
 .delete-button {
-  color:bisque;
+  color: bisque;
   cursor: pointer;
   border: none;
   background-color: transparent;
   font-size: 1.2rem;
+}
+
+.expanded {
+  color: goldenrod;
+  font-size: .9rem;
 }

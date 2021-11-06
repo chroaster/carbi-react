@@ -30,7 +30,7 @@ const Bithumb = async (currency) => {
       return {
         available: true,
         price: Number.parseFloat(data.closing_price),
-        volume: Number.parseFloat(data.acc_trade_value_24H),
+        volume: Number.parseFloat(data.units_traded_24H),
         change: Number.parseFloat(data.fluctate_rate_24H),
         time: new Date(Number.parseFloat(data.date)),
       };

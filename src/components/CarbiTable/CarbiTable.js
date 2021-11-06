@@ -39,9 +39,7 @@ const CarbiTable = () => {
   const carbiRows = symbols.map(item =>
     <CarbiRow
       key={item.id}
-      id={item.id}
-      symbol={item.symbol}
-      name={item.name}
+      item={item}
       rate={rate}
       handleDeleteSymbol={handleDeleteSymbol}
     />
