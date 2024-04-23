@@ -60,7 +60,7 @@ const CarbiTable = () => {
         <tr>
           <td colSpan="6">
             <div className='rate-info'>
-              using USD = {parseInt(rate).toLocaleString()} KRW from {timeAgo(rateTimeStamp)}
+              using USD = {Math.round(rate).toLocaleString()} KRW from {timeAgo(rateTimeStamp)}
             </div>
           </td>
         </tr>
@@ -99,9 +99,5 @@ function timeAgo(dateParam) {
   if (years === 1) return 'last year';
   return `${years} years ago`;
 }
-
-// Example usage:
-const date = new Date('April 20, 2024 14:00:00');
-console.log(timeAgo(date));  // Output will depend on the current date and time
 
 export default CarbiTable;
