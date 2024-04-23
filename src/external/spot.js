@@ -6,7 +6,7 @@ const Spot = async (currency = 'KRW', baseCurrency = 'USD') => {
     if (data.rate === undefined) {
       throw new Error(`Spot did not return rate for ${baseCurrency}/${currency}`);
     }
-    return data.rate;
+    return data;
   } catch (err) {
     console.error(`${new Date().toLocaleTimeString()} ERROR Spot API...`);
     console.error(`${err}`);

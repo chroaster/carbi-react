@@ -10,15 +10,17 @@ const CarbiTable = () => {
   const [symbols, setSymbols] = useState(StarterData.defaultSymbols);
   const [columns] = useState(StarterData.defaultColumns);
   const [rate, setRate] = useState(1);
+  const [rateTimeStamp, setRateTimeStamp] = useState();
   const [rateLoaded, setRateLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const r = await Spot();
-      setRate(r);
+      const res = await Spot();
+      setRate(res.rate);
+      setRateTimeStamp(res.retrieved);
       setRateLoaded(true);
     })();
-  }, [setRate]);
+  }, [setRate, setRateTimeStamp]);
 
   const handleAddSymbol = (symbolToAdd) => {
     setSymbols(prev => {
@@ -55,9 +57,49 @@ const CarbiTable = () => {
       </tbody>
       <tfoot>
         <AddCarbiRow handleAddSymbol={handleAddSymbol} />
+        <tr><td colspan="6">
+        <div className='rate-info'>
+          USD = {rate} KRW {timeAgo(rateTimeStamp)}
+        </div>
+          </td></tr>
       </tfoot>
     </table>
   );
 }
+
+function timeAgo(dateParam) {
+  const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam);
+  const now = new Date();
+  const seconds = Math.round((now - date) / 1000);
+  const minutes = Math.round(seconds / 60);
+
+  if (minutes === 0) return 'just now';
+  if (minutes === 1) return 'a minute ago';
+  if (minutes < 60) return `${minutes} minutes ago`;
+
+  const hours = Math.round(minutes / 60);
+  if (hours === 1) return 'an hour ago';
+  if (hours < 24) return `${hours} hours ago`;
+
+  const days = Math.round(hours / 24);
+  if (days === 1) return 'yesterday';
+  if (days < 7) return `${days} days ago`;
+
+  const weeks = Math.round(days / 7);
+  if (weeks === 1) return 'last week';
+  if (weeks < 4) return `${weeks} weeks ago`;
+
+  const months = Math.round(days / 30);
+  if (months === 1) return 'last month';
+  if (months < 12) return `${months} months ago`;
+
+  const years = Math.round(days / 365);
+  if (years === 1) return 'last year';
+  return `${years} years ago`;
+}
+
+// Example usage:
+const date = new Date('April 20, 2024 14:00:00');
+console.log(timeAgo(date));  // Output will depend on the current date and time
 
 export default CarbiTable;
