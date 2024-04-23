@@ -84,8 +84,9 @@ tfoot {
 .rate-info {
   display: block;
   text-align: center;
-  color: plum;
+  color: #F5F5DC;
   font-weight: lighter;
+  font-size: smaller;
   opacity: 0.4;
   padding-top: 0rem;
   width: 100%;

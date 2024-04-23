@@ -57,11 +57,13 @@ const CarbiTable = () => {
       </tbody>
       <tfoot>
         <AddCarbiRow handleAddSymbol={handleAddSymbol} />
-        <tr><td colspan="6">
-        <div className='rate-info'>
-          USD = {rate} KRW {timeAgo(rateTimeStamp)}
-        </div>
-          </td></tr>
+        <tr>
+          <td colSpan="6">
+            <div className='rate-info'>
+              using USD = {parseInt(rate).toLocaleString()} KRW from {timeAgo(rateTimeStamp)}
+            </div>
+          </td>
+        </tr>
       </tfoot>
     </table>
   );
