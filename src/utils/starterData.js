@@ -75,12 +75,12 @@ const StarterData = {
       name: 'Chainlink',
     }, {
       id: 8,
-      symbol: 'XLM',
-      name: 'Stellar Lumens',
-    }, {
-      id: 9,
       symbol: 'BAT',
       name: 'Basic Attention Token',
+    }, {
+      id: 9,
+      symbol: 'XLM',
+      name: 'Stellar Lumens',
     }
   ],
 }
