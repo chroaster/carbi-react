@@ -1,12 +1,16 @@
+import axios from 'axios';
+
 const CoinbasePro = async (symbol, baseCurrency = 'USD') => {
   // Docs: https://docs.pro.coinbase.com/#get-24hr-stats
   try {
     // const proxy = 'https://simple-cors-proxy.chroaster.com/?url=';
     const url =
       `https://api.pro.coinbase.com/products/${symbol}-${baseCurrency}/stats`;
-    const response = await fetch(`${url}`, { cache: 'no-cache' });
-    if (response.ok) {
-      const data = await response.json();
+    const response = await axios.get(url, { 
+      headers: { 'Cache-Control': 'no-cache' }
+    });
+    if (response.status === 200) {
+      const data = response.data;
       const currentPrice = Number.parseFloat(data.last);
       const openPrice = Number.parseFloat(data.open);
       const changeSinceOpen = 100 * ((currentPrice - openPrice) / openPrice);
@@ -18,7 +22,7 @@ const CoinbasePro = async (symbol, baseCurrency = 'USD') => {
         time: new Date(),
       };
     } else {
-      // fetch failed
+      // axios request failed
       return failureObject();
     }
   } catch (err) {
