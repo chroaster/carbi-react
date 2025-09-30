@@ -1,5 +1,5 @@
 const Spot = async (currency = 'KRW', baseCurrency = 'USD') => {
-  const url = `https://spot.coolbeans.fyi/${baseCurrency}/${currency}`;
+  const url = `https://spot.coolbeans.lol/${baseCurrency}/${currency}`;
   try {
     const res = await fetch(url);
     const data = await res.json();

@@ -1,6 +1,6 @@
 # Carbi - Cryptocurrency Arbitrage Dashboard
 
-Carbi is a clean, purpose-built dashboard providing at-a-glance market conditions for cryptocurrency arbitrage available at [carbi.coolbeans.fyi](https://carbi.coolbeans.fyi). It is currently rustic themed because the author recently finished watching all of Anne with an E.
+Carbi is a clean, purpose-built dashboard providing at-a-glance market conditions for cryptocurrency arbitrage available at [carbi.coolbeans.lol](https://carbi.coolbeans.lol). It is currently rustic themed because the author recently finished watching all of Anne with an E.
 
 ## Implementation
 
