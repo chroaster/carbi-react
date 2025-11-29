@@ -2,6 +2,13 @@
   "name": "carbi-react",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "deploy": "./deploy.sh",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
@@ -15,13 +22,6 @@
     "react-icons": "~4.7.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^3.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "deploy": "./deploy.sh",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
