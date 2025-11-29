@@ -10,8 +10,8 @@ SERVER_USER="tron"
 SERVER_HOST="172.233.86.205"
 CONTAINER_NAME="carbi-react"
 NETWORK_NAME="web"  # Common network name for reverse proxy setup
-# Map container port 80 to localhost:8080 for host nginx to connect
-LOCAL_PORT="8080"
+# Map container port 80 to localhost:8081 for host nginx to connect
+LOCAL_PORT="8081"
 
 echo "Building production Docker image..."
 docker build -t $FULL_IMAGE_NAME .
